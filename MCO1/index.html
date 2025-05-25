@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Autobiography Feature Page</title>
+<style>
+  /* CSS Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #faf9f6;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  /* Header */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background-color: #283747;
+    color: #f7f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+
+  nav {
+    display: flex;
+    gap: 30px;
+    font-weight: 600;
+  }
+
+  nav a {
+    color: #f7f9f9;
+    text-decoration: none;
+    padding: 8px 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.3s;
+  }
+
+  nav a:hover,
+  nav a.active {
+    border-bottom-color: yellow;
+  }
+
+  /* Main layout */
+  main {
+    max-width: 1024px;
+    margin: 80px auto 40px; /* leave space for fixed header */
+    display: flex;
+    gap: 30px;
+    padding: 0 15px;
+  }
+
+  /* Aside */
+  aside {
+    flex-basis: 20%;
+    background: #e8ebec;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 75px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #2c3e50;
+  }
+
+  aside img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+
+  aside h2 {
+    margin-bottom: 8px;
+    color: #283747;
+  }
+
+  aside p {
+    margin-bottom: 6px;
+  }
+
+  /* Content Sections */
+  section.content {
+    flex-basis: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Hero Section */
+  #hero {
+    background: linear-gradient(135deg, gray,yellow);
+    color: white;
+    padding: 60px 40px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  #hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  #hero p {
+    font-size: 1.3rem;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  /* Other Sections */
+  section {
+    background: white;
+    padding: 30px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+  }
+
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #283747;
+    border-bottom: 3px solid #f0b429;
+    padding-bottom: 8px;
+    width: fit-content;
+  }
+
+  section p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #444;
+  }
+
+  /* Skills & Contact Section */
+  #extra-info ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+  }
+
+  #extra-info ul li {
+    background-color: #f7f3e7;
+    padding: 10px 15px;
+    margin-bottom: 9px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #675c2a;
+  }
+
+  form {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  form label {
+    font-weight: 700;
+    color: #675c2a;
+  }
+
+  form input, form textarea {
+    padding: 10px 12px;
+    border: 1.8px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  form button {
+    max-width: 180px;
+    background-color: #283747;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    padding: 12px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  form button:hover {
+    background-color: #1d2833;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #283747;
+    color: #f0b429;
+    text-align: center;
+    padding: 18px;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    main {
+      display: block;
+      margin: 110px 20px 40px;
+    }
+    aside {
+      position: static;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    section.content {
+      width: 100%;
+    }
+    #hero h1 {
+      font-size: 2.2rem;
+    }
+    nav {
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#hero" class="active">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#experience">Experience</a>
+    <a href="#extra-info">Skills & Contact</a>
+  </nav>
+</header>
+
+<main>
+  <aside>
+    <img src="c:\Users\hadap\OneDrive\Desktop\NEXT\HADAP_Web1\rsc\my pic.ico" alt="Professional Portrait" />
+    <h2>Karren Jae Hadap</h2>
+    <p><strong>Email:</strong> hadapkarren@gmail.com</p>
+    <p><strong>Phone:</strong> 09165639365</p>
+    <p><strong>Location:</strong> Padaoil Sta. Cruz Ilocos Sur</p>
+  </aside>
+
+  <section class="content">
+    <section id="hero">
+      <h1>Hi, I'm Karren</h1>
+      <p>Welcome to my autobiography page where I share my journey, skills, and passions.</p>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>My name is Karren Jae Hadap. I am 21 years old and I was born on April 21 2004 in Padaoil Sta. Cruz Ilocos Sur. 
+       I am the daughter of Jessie and Jovelyn. I am the fourth child in our family. I study in ISPSC main campus.
+       Since my early school life, I have learned good manners, good habbits, discipline, obedience and etiquette from my teachers and parents. 
+       My hobbies are watching, painting and learning new things. I like to watch a korean movie.
+       I am also an adventurous person who likes to take challenges. I like to spend time with my family.
+       In my free time i love to watch movies with them while eating salty foods. I also like to having fun with my friends. 
+       Sometimes I become quiet and shy but I also love to being Friendly and share social with other people.</p>
+    
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <p>I embrace agile methodologies and teamwork to deliver quality software.</p>
+    </section>
+
+    <section id="extra-info">
+      <h2>Skills, Achievements & Trainings</h2>
+      <ul>
+        <li>Petal Shield</li>
+        <p>Aphrodite summons a shield of rose petals around herself or a targeted ally, absorbing incoming damage 
+          for a short duration. The shield's strength scales with Aphrodite's magic power.</p>
+        <li>Dove Kiss</li>
+        <p> Aphrodite releases a flock of doves that fly to nearby allies, healing them and granting them a temporary 
+           movement speed boost. The healing and speed boost scale with Aphrodite's magic power.</p>
+        <li>Celestial Embrace</li>
+         <p>Aphrodite channels her power, unleashing a wave of magical energy that damages enemies in a wide area 
+          and briefly stuns them. The damage and stun duration scale with Aphrodite's magic power. The cool down
+          of this skill is reduced by 0.5 seconds each time.</p>
+      </ul>
+
+      <h2>Contact Me</h2>
+      <form id="contactForm" onsubmit="contactSubmit(event)" novalidate>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+        
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+        
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Karren Hadap. All rights reserved.
+</footer>
+
+<script>
+  // Smooth scroll affects by default due to browsers or CSS scroll-behavior
+  // Highlight active navigation link on scroll
+  const sections = [...document.querySelectorAll('section.content > section, #hero')];
+  const navLinks = [...document.querySelectorAll('nav a')];
+
+  window.addEventListener('scroll', () => {
+    let currentSection = null;
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+      if (scrollY >= section.offsetTop - 70) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href').substring(1) === currentSection);
+    });
+  });
+
+  // Contact form submit handler
+  function contactSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+
+    // Simple validation
+    if (!form.name.value.trim() || !form.email.value.trim() || !form.message.value.trim()) {
+      alert('Please fill out all fields.');
+      return;
+    }
+
+    alert(`Thank you, ${form.name.value}, your message has been sent!`);
+    form.reset();
+  }
+</script>
+
+</body>
+</html>
